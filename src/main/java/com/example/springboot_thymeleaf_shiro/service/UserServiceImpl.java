@@ -22,4 +22,9 @@ public class UserServiceImpl implements UserService{
         user.setPassword(md5Hash.toHex());//将加密后的密码存入
         userDao.save(user);
     }
+
+    @Override
+    public User findUserByUserName(String username) {
+        return userDao.findUserByUserName(username);
+    }
 }
