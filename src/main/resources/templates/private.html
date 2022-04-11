@@ -1,11 +1,19 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
 <head>
     <meta charset="UTF-8">
     <title>首页</title>
 </head>
 <body>
 Hello world
-<a th:href="@{/user/logout}">返回登录</a>
+<a th:href="@{/user/logout}">退出登录</a>
+<shiro:hasRole name="admin">
+    <ul>
+        <li><a href="">添加</a></li>
+        <li><a href="">删除</a></li>
+        <li><a href="">修改</a></li>
+        <li><a href="">查询</a></li>
+    </ul>
+</shiro:hasRole>
 </body>
 </html>

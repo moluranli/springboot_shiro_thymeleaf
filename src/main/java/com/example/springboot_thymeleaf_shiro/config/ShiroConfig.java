@@ -1,6 +1,7 @@
 package com.example.springboot_thymeleaf_shiro.config;
 
 
+import at.pollux.thymeleaf.shiro.dialect.ShiroDialect;
 import com.example.springboot_thymeleaf_shiro.shiro.CustomerRealm;
 import org.apache.shiro.authc.credential.HashedCredentialsMatcher;
 import org.apache.shiro.realm.Realm;
@@ -14,6 +15,11 @@ import java.util.Map;
 
 @Configuration
 public class ShiroConfig {
+    @Bean(name="shiroDialect")
+    public ShiroDialect shiroDialect(){
+        return new ShiroDialect();
+    }
+
     //配置ShiroFilter配置Shiro的过滤器
     @Bean(name = "shiroFilterFactoryBean")
     public ShiroFilterFactoryBean getShiroFilterFactoryBean(DefaultWebSecurityManager DefaultWebSecurityManager){
