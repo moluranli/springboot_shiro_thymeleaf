@@ -9,8 +9,12 @@ Hello world
 <a th:href="@{/user/logout}">退出登录</a>
 <ul>
     <shiro:hasAnyRoles name="admin,user"><!--有一个满足-->
-        <li><a href="">添加</a></li>
-        <li><a href="">查询</a></li>
+        <shiro:hasPermission name="user:update:*">
+            <li><a href="">添加</a></li>
+        </shiro:hasPermission>
+        <shiro:hasPermission name="user:find:*">
+            <li><a href="">查询</a></li>
+        </shiro:hasPermission>
     </shiro:hasAnyRoles>
     <shiro:hasRole name="admin">
         <li><a href="">删除</a></li>

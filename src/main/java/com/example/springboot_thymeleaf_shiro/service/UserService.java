@@ -1,5 +1,6 @@
 package com.example.springboot_thymeleaf_shiro.service;
 
+import com.example.springboot_thymeleaf_shiro.entity.Pers;
 import com.example.springboot_thymeleaf_shiro.entity.Role;
 import com.example.springboot_thymeleaf_shiro.entity.User;
 
@@ -11,4 +12,6 @@ public interface UserService {
     User findUserByUserName(String username);
 
     List<Role> findRolesByUserName(String username);
+
+    List<Pers> findPersByPoleId(String id);
 }

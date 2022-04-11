@@ -1,5 +1,6 @@
 package com.example.springboot_thymeleaf_shiro.shiro;
 
+import com.example.springboot_thymeleaf_shiro.entity.Pers;
 import com.example.springboot_thymeleaf_shiro.entity.Role;
 import com.example.springboot_thymeleaf_shiro.entity.User;
 import com.example.springboot_thymeleaf_shiro.service.UserService;
@@ -35,6 +36,12 @@ public class CustomerRealm extends AuthorizingRealm {
         if (!CollectionUtils.isEmpty(roles)){
             roles.forEach(role -> {
                 simpleAuthorizationInfo.addRole(role.getName());
+                List<Pers> pers = userService.findPersByPoleId(role.getId());
+                if (!CollectionUtils.isEmpty(pers)){
+                    pers.forEach(pers1 -> {
+                        simpleAuthorizationInfo.addStringPermission(pers1.getName());
+                    });
+                }
             });
             return simpleAuthorizationInfo;
         }

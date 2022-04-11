@@ -1,6 +1,7 @@
 package com.example.springboot_thymeleaf_shiro.service;
 
 import com.example.springboot_thymeleaf_shiro.dao.UserDao;
+import com.example.springboot_thymeleaf_shiro.entity.Pers;
 import com.example.springboot_thymeleaf_shiro.entity.Role;
 import com.example.springboot_thymeleaf_shiro.entity.User;
 import com.example.springboot_thymeleaf_shiro.utils.SaltUtils;
@@ -34,5 +35,10 @@ public class UserServiceImpl implements UserService{
     @Override
     public List<Role> findRolesByUserName(String username) {
         return userDao.findRoleByUserName(username);
+    }
+
+    @Override
+    public List<Pers> findPersByPoleId(String id) {
+        return userDao.findPersByRoleId(id);
     }
 }
