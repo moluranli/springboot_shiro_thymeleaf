@@ -4,6 +4,7 @@ package com.example.springboot_thymeleaf_shiro.config;
 import at.pollux.thymeleaf.shiro.dialect.ShiroDialect;
 import com.example.springboot_thymeleaf_shiro.shiro.CustomerRealm;
 import org.apache.shiro.authc.credential.HashedCredentialsMatcher;
+import org.apache.shiro.cache.ehcache.EhCacheManager;
 import org.apache.shiro.realm.Realm;
 import org.apache.shiro.spring.web.ShiroFilterFactoryBean;
 import org.apache.shiro.web.mgt.DefaultWebSecurityManager;
@@ -49,6 +50,12 @@ public class ShiroConfig {
         credentialsMatcher.setHashAlgorithmName("MD5");
         credentialsMatcher.setHashIterations(1024);
         customerRealm.setCredentialsMatcher(credentialsMatcher);
+
+        //使用ehcache缓存
+        customerRealm.setCacheManager(new EhCacheManager());
+        customerRealm.setCachingEnabled(true);
+        customerRealm.setAuthenticationCachingEnabled(true);
+        customerRealm.setAuthorizationCachingEnabled(true);
         return customerRealm;
     }
 }

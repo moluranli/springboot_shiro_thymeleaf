@@ -34,8 +34,10 @@ dependencies {
     implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:2.2.2'
     runtimeOnly 'org.hsqldb:hsqldb'
 
-// https://mvnrepository.com/artifact/com.github.theborakompanioni/thymeleaf-extras-shiro
+    // https://mvnrepository.com/artifact/com.github.theborakompanioni/thymeleaf-extras-shiro
     implementation group: 'com.github.theborakompanioni', name: 'thymeleaf-extras-shiro', version: '2.1.0'
+    // https://mvnrepository.com/artifact/org.apache.shiro/shiro-ehcache
+    implementation group: 'org.apache.shiro', name: 'shiro-ehcache', version: '1.9.0'
 
 
 }
