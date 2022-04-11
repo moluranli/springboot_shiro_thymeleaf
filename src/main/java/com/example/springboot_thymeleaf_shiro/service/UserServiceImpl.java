@@ -1,11 +1,14 @@
 package com.example.springboot_thymeleaf_shiro.service;
 
 import com.example.springboot_thymeleaf_shiro.dao.UserDao;
+import com.example.springboot_thymeleaf_shiro.entity.Role;
 import com.example.springboot_thymeleaf_shiro.entity.User;
 import com.example.springboot_thymeleaf_shiro.utils.SaltUtils;
 import org.apache.shiro.crypto.hash.Md5Hash;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class UserServiceImpl implements UserService{
@@ -26,5 +29,10 @@ public class UserServiceImpl implements UserService{
     @Override
     public User findUserByUserName(String username) {
         return userDao.findUserByUserName(username);
+    }
+
+    @Override
+    public List<Role> findRolesByUserName(String username) {
+        return userDao.findRoleByUserName(username);
     }
 }

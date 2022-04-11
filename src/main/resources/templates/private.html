@@ -7,13 +7,15 @@
 <body>
 Hello world
 <a th:href="@{/user/logout}">退出登录</a>
-<shiro:hasRole name="admin">
-    <ul>
+<ul>
+    <shiro:hasAnyRoles name="admin,user"><!--有一个满足-->
         <li><a href="">添加</a></li>
+        <li><a href="">查询</a></li>
+    </shiro:hasAnyRoles>
+    <shiro:hasRole name="admin">
         <li><a href="">删除</a></li>
         <li><a href="">修改</a></li>
-        <li><a href="">查询</a></li>
-    </ul>
-</shiro:hasRole>
+    </shiro:hasRole>
+</ul>
 </body>
 </html>
