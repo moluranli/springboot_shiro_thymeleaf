@@ -1,5 +1,6 @@
 package com.example.springboot_thymeleaf_shiro.shiro;
 
+import com.example.springboot_thymeleaf_shiro.config.MyByteSource;
 import com.example.springboot_thymeleaf_shiro.entity.Pers;
 import com.example.springboot_thymeleaf_shiro.entity.Role;
 import com.example.springboot_thymeleaf_shiro.entity.User;
@@ -17,8 +18,6 @@ import org.apache.shiro.util.CollectionUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.ObjectUtils;
 
-import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 
 //自定义Realm
@@ -53,7 +52,7 @@ public class CustomerRealm extends AuthorizingRealm {
         String principal = (String) token.getPrincipal();
         User user = userService.findUserByUserName(principal);
         if (!ObjectUtils.isEmpty(user)){
-            return new SimpleAuthenticationInfo(user.getUsername(), user.getPassword(), ByteSource.Util.bytes(user.getSalt()), this.getName());
+            return new SimpleAuthenticationInfo(user.getUsername(), user.getPassword(), new MyByteSource(user.getSalt()), this.getName());
         }
         return null;
     }

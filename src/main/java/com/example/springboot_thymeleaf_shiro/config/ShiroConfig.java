@@ -2,6 +2,7 @@ package com.example.springboot_thymeleaf_shiro.config;
 
 
 import at.pollux.thymeleaf.shiro.dialect.ShiroDialect;
+import com.example.springboot_thymeleaf_shiro.cache.RedisCacheManager;
 import com.example.springboot_thymeleaf_shiro.shiro.CustomerRealm;
 import org.apache.shiro.authc.credential.HashedCredentialsMatcher;
 import org.apache.shiro.cache.ehcache.EhCacheManager;
@@ -52,10 +53,12 @@ public class ShiroConfig {
         customerRealm.setCredentialsMatcher(credentialsMatcher);
 
         //使用ehcache缓存
-        customerRealm.setCacheManager(new EhCacheManager());
+        customerRealm.setCacheManager(new RedisCacheManager());
         customerRealm.setCachingEnabled(true);
         customerRealm.setAuthenticationCachingEnabled(true);
+        customerRealm.setAuthenticationCacheName("authenticationCache");
         customerRealm.setAuthorizationCachingEnabled(true);
+        customerRealm.setAuthorizationCacheName("authorizationCache");
         return customerRealm;
     }
 }
