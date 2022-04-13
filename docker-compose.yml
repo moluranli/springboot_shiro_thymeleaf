@@ -1,0 +1,18 @@
+version: '3.0'
+
+services:
+  hsqldb:
+    image: blacklabelops/hsqldb:latest
+    container_name: hsqldb_shiro
+    ports:
+      - 9001:9001
+    volumes:
+      - ./db:/opt/database
+
+  redis:
+    image: redis:latest
+    container_name: redis_shiro
+    ports:
+      - 6379:6379
+    volumes:
+      - ./myredis:/usr/local/etc/redis
